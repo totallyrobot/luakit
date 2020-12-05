@@ -42,8 +42,39 @@ _M.new_tab_file = luakit.data_dir .. "/newtab.html"
 -- @readwrite
 _M.new_tab_src = ([==[
     <html>
-        <head><title>New Tab</title></head>
-        <body bgcolor="{bgcolor}"></body>
+        <head>
+        <title>New Tab</title>
+        <style>
+            * {
+        	    font-family: "Noto Sans Mono";
+            }
+            #searchbox {
+	            background-color: {bgcolor};
+	            padding: 5px;
+	            width: 100%;
+	            margin-top: 20vh;
+	            color: #ffffff;
+	            border-top: 0;
+	            border-left: 0;
+	            border-right: 0;
+	            border-bottom: 2px solid white;
+            }
+        </style>        
+        </head>
+        <body bgcolor="{bgcolor}">
+            <input id="searchbox" type="text" placeholder="please enter your search here..."></input>
+        </body>
+        <script defer>
+            document.getElementById("searchbox").addEventListener("keydown", function(event) {
+		    if (event.keyCode === 13) {
+		     	search(document.getElementById("searchbox").value);
+		    }
+	        });
+            
+            function search(searchQuery) {
+                window.open("https://duckduckgo.com/?q=" + searchQuery.replace(" ", "+"), "_self");   
+            }
+        </script>
     </html>
 ]==]):gsub("{bgcolor}", theme.bg)
 
