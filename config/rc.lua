@@ -53,6 +53,7 @@ window.add_signal("build", function (w)
     local widgets, l, r = require "lousy.widget", w.sbar.l, w.sbar.r
 
     -- Left-aligned status bar widgets
+    r.layout:pack(widgets.ssl())
     l.layout:pack(widgets.uri())
     l.layout:pack(widgets.hist())
     l.layout:pack(widgets.progress())
@@ -60,7 +61,6 @@ window.add_signal("build", function (w)
     -- Right-aligned status bar widgets
     r.layout:pack(widgets.buf())
     r.layout:pack(log_chrome.widget())
-    r.layout:pack(widgets.ssl())
     r.layout:pack(widgets.tabi())
     r.layout:pack(widgets.scroll())
 end)
