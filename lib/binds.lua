@@ -526,7 +526,7 @@ modes.add_cmds({
         format = "{command}",
     }},
     { ":tabnew", "Open a new tab.", {
-        func = function (w, o) w:new_tab() w:run_cmd(":o" .. o.arg) end
+        func = function (w, o) w:new_tab() w:run_cmd(":o " .. o.arg) end
     }},
     { ":tabd[o]", "Execute command in each tab.", {
         func = function (w, o) w:each_tab(function () w:run_cmd(":" .. o.arg) end) end,
