@@ -86,7 +86,6 @@ function _M.build(w)
     w.tablist = lousy.widget.tablist(w.tabs, "horizontal")
 
     w.ebox.child = w.layout
-    w.layout:pack(w.tablist.widget)
     w.menu_tabs.child = w.tabs
 
     w.win.child = w.ebox
@@ -138,6 +137,8 @@ function _M.build(w)
     w.bar_layout.homogeneous = true
     w.layout:pack(w.bar_layout)
 
+
+    w.layout:pack(w.tablist.widget)
     -- Other settings
     i.input.show_frame = false
     w.tabs.show_tabs = false
