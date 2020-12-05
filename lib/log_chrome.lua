@@ -204,14 +204,14 @@ end)
 -- numerical argument, the result of which is substituted into @ref{widget_format}.
 -- @type string
 -- @readwrite
-_M.widget_error_format = "<span color='#f00'>E: %d</span>"
+_M.widget_error_format = "<span color='#f00'> %d</span>"
 
 --- Format string which defines the appearance of the error/warning widget.
 -- This is passed to `string.format` with the number of warnings as a
 -- numerical argument, the result of which is substituted into @ref{widget_format}.
 -- @type string
 -- @readwrite
-_M.widget_warning_format = "<span color='#f60'>W: %d</span>"
+_M.widget_warning_format = "<span color='#f60'> %d</span>"
 
 --- Format string which defines the appearance of the error/warning widget.
 -- This combines the error and warning sub-format strings. `{errors}` will be

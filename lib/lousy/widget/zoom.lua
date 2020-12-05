@@ -18,7 +18,7 @@ local _M = {}
 -- This is passed to `string.format` the the zoom level as a numerical argument.
 -- @type string
 -- @readwrite
-_M.format = "[zoom:%d%%]"
+_M.format = " %d%%"
 
 local widgets = {
     update = function (w, zoom)
