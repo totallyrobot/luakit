@@ -491,7 +491,7 @@ modes.add_cmds({
     {":search-newtab, :st", "Search for something on the web with DuckDuckGo in a new tab.", {
         func = function (w ,o)
              if o.arg then
-                 w:new_tab("https://duckduckgo.com/?q=" .. o.arg, {switch = true})
+                 w:new_tab("https://duckduckgo.com/?q=" .. string.gsub(o.arg, " ", "+"), {switch = true})
              else
                  w:error("Must provide search query.")
              end
@@ -500,7 +500,7 @@ modes.add_cmds({
     {":s[earch]", "Search for something on the web with DuckDuckGo.", {
         func = function (w, o)
              if o.arg then
-                 w:navigate("https://duckduckgo.com/?q=" .. o.arg)
+                 w:navigate("https://duckduckgo.com/?q=" .. string.gsub(o.arg, " ", "+"))
              else
                  w:error("Must provide search query.")
              end
