@@ -461,7 +461,7 @@ modes.add_cmds({
             w:activate()
         end },
 
-    { ":c[lose]", "Close current tab.", function (w) w:close_tab() end },
+    { ":c[lose], :tq", "Close current tab.", function (w) w:close_tab() end },
     { ":print", "Print current page.", function (w) w.view:eval_js("print()", { no_return = true }) end },
     { ":stop", "Stop loading.", function (w) w.view:stop() end },
     { ":r[eload]", "Reload page.", function (w) w:reload() end },
@@ -487,6 +487,24 @@ modes.add_cmds({
     { ":w[inopen]", "Open one or more URLs in a new window.", {
         func = function (_, o) window.new({o.arg}) end,
         format = "{uri}",
+    }},
+    {":search-newtab, :st", "Search for something on the web with DuckDuckGo in a new tab.", {
+        func = function (w ,o)
+             if o.arg then
+                 w:new_tab("https://duckduckgo.com/?q=" .. o.arg, {switch = true})
+             else
+                 w:error("Must provide search query.")
+             end
+         end
+    }},
+    {":s[earch]", "Search for something on the web with DuckDuckGo.", {
+        func = function (w, o)
+             if o.arg then
+                 w:navigate("https://duckduckgo.com/?q=" .. o.arg)
+             else
+                 w:error("Must provide search query.")
+             end
+         end
     }},
     { ":javascript, :js", "Evaluate JavaScript snippet.",
         function (w, o)
